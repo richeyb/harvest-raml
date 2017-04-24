@@ -7,8 +7,12 @@
     "example": "examples"
   },
   "scripts": {
+    "start": "./node_modules/bin/raml2html harvest.raml > output/harvest.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Brandon Richey <brandon.richey@greenhouse.io>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "raml2html": "^6.2.0"
+  }
 }
