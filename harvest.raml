@@ -1,0 +1,61 @@
+#%RAML 1.0
+---
+title: Harvest API
+baseUri: https://harvest.greenhouse.io/{version}
+version: v1
+documentation:
+  - title: Introduction
+    content: !include pages/introduction.md
+  - title: Authentication
+    content: !include pages/authentication.md
+  - title: Throttling
+    content: !include pages/throttling.md
+  - title: Pagination
+    content: !include pages/pagination.md
+  - title: Validation
+    content: !include pages/validation.md
+  - title: General Considerations
+    content: !include pages/general_considerations.md
+  - title: Errors
+    content: !include pages/errors.md
+mediaType: application/json
+securedBy: apiKeyAuth
+securitySchemes:
+  apiKeyAuth:
+    description: Each request must contain the API key as the username with a blank password; the whole thing must be Base64 encoded.
+    type: Basic Authentication
+    describedBy:
+      headers:
+        Authorization:
+          description: Used to send the Base64 encoded "{API Key}:"
+                       credentials
+          type: string
+      responses:
+        401:
+          description: |
+            Unauthorized. Either the provided username and password
+            combination is invalid, or the user is not allowed to access
+            the content provided by the requested URL.
+types:
+  TrackingLink: !include types/TrackingLink.raml
+/jobs:
+  /{job_id}:
+    /tracking_link:
+      /{tracking_link_id}:
+        get:
+          description: Returns a specific tracking link for a job with `job_id = {job_id}` and `tracking_link_id = {tracking_link_id}`
+          responses:
+            200:
+              body:
+                application/json:
+                  type: TrackingLink
+                  example: !include examples/v1/tracking_link.json
+    /tracking_links:
+      get:
+        description: Returns a list of all of a job's tracking links with `job_id = {job_id}`
+        responses:
+          200:
+            body:
+              application/json:
+                type: TrackingLink[]
+                example: !include examples/v1/tracking_links.json

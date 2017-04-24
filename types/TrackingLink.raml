@@ -1,0 +1,31 @@
+#%RAML 1.0 DataType
+---
+displayName: TrackingLink
+type: object
+description: The tracking link resource is the data used to construct the tracking link from the token, mapping a short link for a job back to a referrer and source.
+properties:
+  id:
+    type: integer
+    description: The ID of the tracking link.
+  job_id:
+    description: The id of the job associated with this tracking link.
+    type: integer
+  token:
+    description: The token included in the job board link.
+    type: string
+  related_post_id?:
+    description: The ID of the related post or email for this job token
+    type: integer
+  related_post_type?:
+    description: The type of post associated with this token. For example: SocialMediaPost
+    type: string
+  credited_to?:
+    type: !include CreditedTo.raml
+  source?:
+    type: !include Source.raml
+  created_at:
+    description: The ISO-8601 Timestamp for when this tracking link was created.
+    type: string
+  updated_at:
+    description: The ISO-8601 Timestamp for when this tracking link was last updated.
+    type: string

@@ -1,0 +1,14 @@
+{
+  "name": "harvest-raml",
+  "version": "1.0.0",
+  "description": "A RAML implementation of the current Harvest API for Greenhouse.",
+  "main": "harvest.raml",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brandon Richey <brandon.richey@greenhouse.io>",
+  "license": "ISC"
+}
