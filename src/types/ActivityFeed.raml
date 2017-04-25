@@ -3,10 +3,9 @@
 displayName: ActivityFeed
 type: object
 description: The activity feed for a candidate.
+uses:
+  Harvest: types.raml
 properties:
-  notes:
-    type: array #!include ActivityFeedNote.raml
-  emails:
-    type: array #!include ActivityFeedEmail.raml
-  activities:
-    type: array #!include ActivityFeedActivity.raml
+  notes?: Harvest.ActivityFeedNote[]
+  emails?: Harvest.ActivityFeedEmail[]
+  activities?: Harvest.ActivityFeedActivity[]

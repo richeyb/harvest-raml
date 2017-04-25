@@ -39,6 +39,26 @@ securitySchemes:
 types:
   TrackingLink: !include types/TrackingLink.raml
   ActivityFeed: !include types/ActivityFeed.raml
+  Application: !include types/Application.raml
+/applications:
+  get:
+    description: List all of an organization's applications.
+    responses:
+      200:
+        body:
+          application/json:
+            type: Application[]
+            example: !include examples/v1/applications.json
+  
+  /{application_id}:
+    get:
+      description: List a specific application for aan organization.
+      responses:
+        200:
+          body:
+            application/json:
+              type: Application
+              example: !include examples/v1/application.json
 /candidates:
   /{candidate_id}:
     /activity_feed:

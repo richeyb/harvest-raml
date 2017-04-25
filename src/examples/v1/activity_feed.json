@@ -39,7 +39,7 @@
       "user": {
         "id": 214,
         "name": "Boone Carlyle",
-        "employee_id": 12345
+        "employee_id": "12345"
       }
     },
     {

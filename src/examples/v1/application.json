@@ -1,0 +1,37 @@
+{
+  "id": 23239258,
+  "candidate_id": 14834098,
+  "prospect": false,
+  "applied_at": "2015-12-28T20:53:12.801Z",
+  "rejected_at": null,
+  "last_activity_at": "2016-12-30T07:10:03.082Z",
+  "source": {
+    "id": 16,
+    "public_name": "Referral"
+  },
+  "credited_to": {
+    "id": 107050,
+    "name": "Ivan Interviewer",
+    "employee_id": null
+  },
+  "rejection_reason": null,
+  "rejection_details": null,
+  "jobs": [
+    {
+      "id": 87181,
+      "name": "Product Manager"
+    }
+  ],
+  "status": "hired",
+  "current_stage": null,
+  "answers": [
+    {
+      "question": "How many years experience do you have?",
+      "answer": "5-7"
+    },
+    {
+      "question": "Website",
+      "answer": "mywebsite.com"
+    }
+  ]
+}

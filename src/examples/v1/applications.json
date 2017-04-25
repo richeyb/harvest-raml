@@ -1,0 +1,33 @@
+[
+  {
+    "id": 4341,
+    "candidate_id": 23123,
+    "prospect": true,
+    "applied_at": "2014-03-26T18:03:45.000Z",
+    "rejected_at": null,
+    "last_activity_at": "2014-03-27T16:12:02.000Z",
+    "source": {
+      "id": 13,
+      "public_name": "Linkedin (Prospecting)"
+    },
+    "credited_to": {
+      "id": 4080,
+      "name": "Kate Austen"
+    },
+    "rejection_reason": null,
+    "rejection_details": null,
+    "jobs": [
+      {
+        "id": 203037,
+        "name": "Full Stack Engineer - New York "
+      },
+      {
+        "id": 201428,
+        "name": "Full Stack Engineer - Austin"
+      }
+    ],
+    "status": "active",
+    "current_stage": null,
+    "answers": []
+  }
+]
