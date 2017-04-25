@@ -7,13 +7,15 @@
     "example": "examples"
   },
   "scripts": {
-    "start": "./node_modules/raml2html/bin/raml2html harvest.raml > docs/index.html",
-    "preview": "./node_modules/raml2html/bin/raml2html harvest.raml > docs/index.html && open docs/index.html",
+    "start": "./node_modules/watchman/watchman src \"npm run build\"",
+    "build": "./node_modules/raml2html/bin/raml2html src/harvest.raml > docs/index.html",
+    "preview": "./node_modules/raml2html/bin/raml2html src/harvest.raml > docs/index.html && open docs/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Brandon Richey <brandon.richey@greenhouse.io>",
   "license": "ISC",
   "dependencies": {
-    "raml2html": "^6.2.0"
+    "raml2html": "^6.2.0",
+    "watchman": "^0.1.8"
   }
 }
