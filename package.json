@@ -7,8 +7,8 @@
     "example": "examples"
   },
   "scripts": {
-    "start": "./node_modules/raml2html/bin/raml2html harvest.raml > output/harvest.html",
-    "preview": "./node_modules/raml2html/bin/raml2html harvest.raml > output/harvest.html && open output/harvest.html",
+    "start": "./node_modules/raml2html/bin/raml2html harvest.raml > docs/index.html",
+    "preview": "./node_modules/raml2html/bin/raml2html harvest.raml > docs/index.html && open docs/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Brandon Richey <brandon.richey@greenhouse.io>",
