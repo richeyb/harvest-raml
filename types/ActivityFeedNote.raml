@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+---
+displayName: ActivityFeedNote
+type: object
+description: The note in the activity feed for this candidate.
+properties:
+  id: number
+  created_at: string
+  body: string
+  user?: !include User.raml
+  private: boolean
+  visiblity: string
+  visibility: string

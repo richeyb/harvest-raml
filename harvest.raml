@@ -38,6 +38,18 @@ securitySchemes:
             the content provided by the requested URL.
 types:
   TrackingLink: !include types/TrackingLink.raml
+  ActivityFeed: !include types/ActivityFeed.raml
+/candidates:
+  /{candidate_id}:
+    /activity_feed:
+      get:
+        description: Retrieve a candidate's activity feed.
+        responses:
+          200:
+            body:
+              application/json:
+                type: ActivityFeed
+                example: !include examples/v1/activity_feed.json
 /jobs:
   /{job_id}:
     /tracking_link:
