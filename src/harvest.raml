@@ -103,6 +103,12 @@ traits:
             custom_fields?:
               type: object[]
               description: Array of hashes containing new custom field values. Passing an empty array does nothing.
+      responses:
+        200:
+          body:
+            application/json:
+              type: Application
+              example: !include ./examples/v1/application.json
     /advance:
       post:
         is: [auditable]
