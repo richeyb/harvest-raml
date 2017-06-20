@@ -1,0 +1,23 @@
+#%RAML 1.0 DataType
+displayName: Application
+type: object
+description: Applications associate candidates with jobs. There are 2 kinds of applications: candidates and prospects. Candidate applications always have exactly 1 job. Prospect applications can have 0 or more jobs.
+uses:
+  Harvest: types.raml
+properties:
+  id: number
+  candidate_id: number
+  prospect: boolean
+  status: string
+  applied_at?: datetime
+  rejected_at?: datetime
+  last_activity_at?: datetime
+  source?: Harvest.Source
+  credited_to?: Harvest.CreditedTo
+  rejection_reason?: Harvest.RejectionReason
+  rejection_details?: string
+  jobs: Harvest.SimpleJob[]
+  current_stage?: Harvest.JobStage
+  answers?: Harvest.Answer[]
+  custom_fields?: object
+  keyed_custom_fields?: object

@@ -1,0 +1,221 @@
+#%RAML 1.0
+---
+title: Harvest API
+baseUri: https://harvest.greenhouse.io/{version}
+version: v1
+documentation:
+  - title: Introduction
+    content: !include pages/introduction.md
+  - title: Authentication
+    content: !include pages/authentication.md
+  - title: Throttling
+    content: !include pages/throttling.md
+  - title: Pagination
+    content: !include pages/pagination.md
+  - title: Validation
+    content: !include pages/validation.md
+  - title: General Considerations
+    content: !include pages/general_considerations.md
+  - title: Errors
+    content: !include pages/errors.md
+mediaType: application/json
+securedBy: apiKeyAuth
+securitySchemes:
+  apiKeyAuth:
+    description: Each request must contain the API key as the username with a blank password; the whole thing must be Base64 encoded.
+    type: Basic Authentication
+    describedBy:
+      headers:
+        Authorization:
+          description: Used to send the Base64 encoded "{API Key}:"
+                       credentials.
+          type: string
+      responses:
+        401:
+          description: |
+            Unauthorized. Either the provided username and password
+            combination is invalid, or the user is not allowed to access
+            the content provided by the requested URL.
+types:
+  TrackingLink: !include types/TrackingLink.raml
+  ActivityFeed: !include types/ActivityFeed.raml
+  Application: !include types/Application.raml
+traits:
+  auditable:
+    headers:
+      On-Behalf-Of:
+        type: integer
+        description: ID of the user issuing this request. Required for auditing purposes.
+/applications:
+  get:
+    description: List all of an organization's applications.
+    responses:
+      200:
+        body:
+          application/json:
+            type: Application[]
+            example: !include ./examples/v1/applications.json
+
+  /{application_id}:
+    get:
+      description: List a specific application for aan organization.
+      responses:
+        200:
+          body:
+            application/json:
+              type: Application
+              example: !include ./examples/v1/application.json
+    delete:
+      is: [auditable]
+      description:
+        Delete an application by `id`. Note that only candidate applications can be deleted, you cannot delete a prospect application.
+      responses:
+        200:
+          body:
+            application/json:
+              type: object
+              properties:
+                message: string
+              example: !include ./examples/v1/application_deleted.json
+    patch:
+      is: [auditable]
+      description:
+        Update this application. The response is populated with the application's information
+        which will reflect its new state. You can update applications whose status is `active`,
+        `rejected`, or `hired`.
+      body:
+        application/json:
+          type: object
+          properties:
+            source_id?:
+              type: integer
+              description: The ID of the application's source
+            referrer?:
+              type: object
+              description: An object representing the referrer
+              properties:
+                type:
+                  type: string
+                  description: A string representing the type of referrer ('id', 'email', or 'outside')
+                value:
+                  type: integer
+                  description: The id of the user who made the referral (not the referrer id)
+            custom_fields?:
+              type: object[]
+              description: Array of hashes containing new custom field values. Passing an empty array does nothing.
+      responses:
+        200:
+          body:
+            application/json:
+              type: Application
+              example: !include ./examples/v1/application.json
+    /advance:
+      post:
+        is: [auditable]
+        description:
+          Move this application to the next stage. The response is populated with the application's
+          information which will reflect its new state. Note that only applications in the `active`
+          state can be advanced.
+        body:
+          application/json:
+            type: object
+            properties:
+              from_stage_id:
+                type: integer
+                description: The ID of the job stage this application is currently in.
+        responses:
+          200:
+            body:
+              application/json:
+                type: Application
+                example: !include ./examples/v1/application.json
+  /move:
+    post:
+      is: [auditable]
+      description:
+        Move this application to the next stage. The response is populated with the application's
+        information which will reflect its new state. Note that only applications in the `active`
+        state can be advanced.
+      body:
+        application/json:
+          type: object
+          properties:
+            from_stage_id:
+              type: integer
+              description: The ID of the job stage this application is currently in.
+            to_stage_id:
+              type: integer
+              description: The ID of the job stage this application should be moved to.
+      responses:
+        200:
+          body:
+            application/json:
+              type: Application
+              example: !include ./examples/v1/application.json
+  /reject:
+    post:
+      is: [auditable]
+      description:
+        Reject this application. The response is populated with the application's information
+        which will reflect its new state. Note that only applications in the `active` state can
+        be rejected.
+      body:
+        application/json:
+          type: object
+          properties:
+            rejection_reason_id?:
+              type: integer
+              description: The ID of the reason why this application was rejected.
+            notes?:
+              type: string
+              description: Notes on why this application was rejected. These will be added to the activity feed.
+            rejection_email?:
+              type: object
+              properties:
+                sent_email_at:
+                  type: string
+                  description: The rejection email will be delayed until this time.
+                email_template_id:
+                  type: string
+                  description: The template the to use for the rejection email.
+      responses:
+        200:
+          body:
+            application/json:
+              type: Application
+              example: !include ./examples/v1/application.json
+  /unreject:
+    post:
+      is: [auditable]
+      description:
+        Unreject this application. The response is populated with the application in its new state. Note that only applications in the `rejected` state can be unrejected.
+      responses:
+        200:
+          body:
+            application/json:
+              type: Application
+              example: !include ./examples/v1/application.json
+/candidates:
+  /{candidate_id}:
+    /activity_feed:
+      get:
+        description: Retrieve a candidate's activity feed.
+        responses:
+          200:
+            body:
+              application/json:
+                type: ActivityFeed
+                example: !include ./examples/v1/activity_feed.json
+/jobs:
+  /tracking_links:
+    /{job_id}:
+      /tracking_link:
+        /{tracking_link_id}:
+          get:
+            description: Returns a specific tracking link for a job with `job_id = {job_id}` and `tracking_link_id = {tracking_link_id}`
+            responses:
+              200:
+                body:
+                  application/json:
+                    type: TrackingLink
+                    example: !include ./examples/v1/tracking_link.json

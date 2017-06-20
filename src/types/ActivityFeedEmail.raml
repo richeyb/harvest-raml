@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+---
+displayName: ActivityFeedEmail
+type: object
+description: The email in the activity feed for this candidate.
+properties:
+  id: number
+  created_at: string
+  subject: string
+  body: string
+  to: string
+  from: string
+  cc?: null
+  user?: !include User.raml

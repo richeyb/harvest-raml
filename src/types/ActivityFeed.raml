@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+---
+displayName: ActivityFeed
+type: object
+description: The activity feed for a candidate.
+uses:
+  Harvest: types.raml
+properties:
+  notes?: Harvest.ActivityFeedNote[]
+  emails?: Harvest.ActivityFeedEmail[]
+  activities?: Harvest.ActivityFeedActivity[]

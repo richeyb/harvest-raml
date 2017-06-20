@@ -1,0 +1,15 @@
+#%RAML 1.0 DataType
+---
+displayName: User
+type: object
+description: A Greenhouse User.
+properties:
+  id?:
+    type: integer
+    description: The ID of the Greenhouse user.
+  name:
+    description: The full name of the Greenhouse user.
+    type: string
+  employee_id?:
+    description: The Greenhouse user's External/Employee ID
+    type: string

@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+---
+displayName: ActivityFeedActivity
+type: object
+description: The miscellaneous activity in the activity feed for this candidate.
+properties:
+  id: number
+  created_at: string
+  subject?: string
+  body?: string
+  user?: !include User.raml
