@@ -1,0 +1,29 @@
+#%RAML 1.0 DataType
+displayName: Candidate
+type: object
+description: A Candidate is a person who is either a prospect for a job or has an application for a job.
+uses:
+  Harvest: types.raml
+properties:
+  id: number
+  first_name: string
+  last_name: string
+  company: string
+  title: string
+  is_private: boolean
+  created_at: datetime
+  last_activity: datetime
+  photo_url: string
+  attachments: Harvest.SimpleAttachment[]
+  application_ids: number[]
+  phone_numbers: Harvest.PhoneNumber[]
+  addresses: Harvest.Address[]
+  email_addresses: Harvest.EmailAddress[]
+  website_addresses: Harvest.WebsiteAddress[]
+  social_media_addresses: Harvest.SocialMediaAddress[]
+  recruiter: Harvest.Recruiter
+  coordinator?: Harvest.Recruiter
+  tags: Harvest.Tag[]
+  custom_fields: Harvest.CustomField
+  keyed_custom_fields: Harvest.KeyedCustomField
+example: !include ../examples/v1/candidate.json

@@ -1,0 +1,9 @@
+#%RAML 1.0 DataType
+displayName: CustomField
+type: object
+description:
+  A Custom Field is a user-defined special field that can be used to store additional data about a Greenhouse object, such as job or application.
+  The properties in this hash reflect the active custom fields as of the time this method is called. The keys are the names of the custom fields,
+  and the values are the values of the custom fields.
+additionalProperties: true
+example: !include ../examples/v1/custom_field.json

@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+---
+displayName: PostActivityFeedNote
+type: object
+description: The note in the activity feed for this candidate.
+properties:
+  user_id: integer
+  body: string
+  visiblity:
+    type: string
+    description:
+      Due to a legacy typo, the response includes the same value as visiblity.
+      It is safe to ignore this value, but it is maintained for backward compatibility.
+  visibility:
+    type: string
+    enum: [admin_only, private, public]
+example: !include ../examples/v1/post_activity_feed_note.json

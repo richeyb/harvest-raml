@@ -1,0 +1,35 @@
+#%RAML 1.0 DataType
+displayName: PostCandidateApplication
+type: object
+description: Applications associate candidates with jobs. There are 2 kinds of applications: candidates and prospects. Candidate applications always have exactly 1 job. Prospect applications can have 0 or more jobs.
+uses:
+  Harvest: types.raml
+properties:
+  job_id:
+    type: number
+    description: The ID of the job you want to create an application to for this candidate
+    required: true
+  source_id:
+    type: number
+    description: The id of the source to be credited for this application
+    required: false
+  initial_stage_id:
+    type: number
+    description: The ID of the job stage this application will be created in.
+    required: false
+  referrer:
+    type: object
+    description: An object representing the referrer
+    required: false
+    properties:
+      type:
+        description: A string representing the type of referrer - ‘id’, 'email’, or 'outside’
+        type: string
+        enum: [id, email, outside]
+      value:
+        description: The id of the user who made the referral (not the referrer id)
+        type: number
+  attachments:
+    description: An array of attachments to be uploaded to this application.
+    type: Harvest.Attachment[]
+example: !include ../examples/v1/post_candidate_application.json

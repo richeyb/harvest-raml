@@ -1,0 +1,45 @@
+{
+  "first_name": "Zooey",
+  "last_name": "Teddy",
+  "company": "Leeo, Inc",
+  "title": "Senior Digital Marketing Manager",
+  "is_private": false,
+  "phone_numbers": [
+    {
+      "value": "330-281-8004",
+      "type": "home"
+    },
+    {
+      "value": "330-281-8004",
+      "type": "home"
+    }
+  ],
+  "addresses": [
+    {
+      "value": "21 Jump Street, New York, NY 10003",
+      "type": "home"
+    }
+  ],
+  "email_addresses": [
+    {
+      "value": "zooey.teddy.6801407@example.com",
+      "type": "personal"
+    },
+    {
+      "value": "zooey.teddy.6801407@example.com",
+      "type": "personal"
+    }
+  ],
+  "website_addresses": [
+    {
+      "value": "http://www.example.com/",
+      "type": "personal"
+    }
+  ],
+  "social_media_addresses": [],
+  "tags": [],
+  "custom_fields": {
+    "current_salary": "$123,000",
+    "desired_salary": null
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "current_salary": {
+    "name": "Current salary",
+    "type": "short_text",
+    "value": "$123,000"
+  },
+  "new_salary": {
+    "name": "Desired salary",
+    "type": "short_text",
+    "value": null
+  }
+}
