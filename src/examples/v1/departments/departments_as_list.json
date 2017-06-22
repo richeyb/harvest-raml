@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Technology",
+    "parent_id": 5,
+    "child_ids": [11, 12]
+  },
+  {
+    "id": 2,
+    "name": "Administration",
+    "parent_id": null,
+    "child_ids": []
+  }
+]
