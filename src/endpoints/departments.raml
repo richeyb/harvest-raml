@@ -45,20 +45,7 @@ post:
     Recruiting customers._
   is: [auditable]
   body:
-    application/json:
-      type: object
-      properties:
-        name:
-          type: string
-          description:
-            The name of your new department. Must be less than 255 characters and unique
-            within your organization.
-        parent_id:
-          type: number
-          required: false
-          description:
-            The department id for the new department to be nested under. If this isn’t included,
-            the department will be created at the top level.
+    application/json: Harvest.PostDepartment
   responses:
     200:
       body:

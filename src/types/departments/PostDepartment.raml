@@ -1,0 +1,18 @@
+#%RAML 1.0 DataType
+displayName: PostDepartment
+type: object
+description:
+  The expected body for creating a new department.
+properties:
+  name:
+    type: string
+    description:
+      The name of your new department. Must be less than 255 characters and unique
+      within your organization.
+  parent_id:
+    type: number
+    required: false
+    description:
+      The department id for the new department to be nested under. If this isn’t included,
+      the department will be created at the top level.
+example: !include ../../examples/v1/departments/post_department.json
