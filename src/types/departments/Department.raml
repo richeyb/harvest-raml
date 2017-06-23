@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+displayName: Department
+type: object
+description:
+  An organization’s departments.
+properties:
+  id: number
+  name: string
+  parent_id?: number
+  child_ids?: number[]
+  children?: object[]
+examples:
+  render_as_list: !include ../../examples/v1/departments/department_as_list.json
+  render_as_tree: !include ../../examples/v1/departments/department_as_tree.json

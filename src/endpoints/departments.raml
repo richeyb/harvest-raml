@@ -1,0 +1,52 @@
+get:
+  description: List all of an organization's departments
+  is: [pageable]
+  queryParameters:
+    render_as:
+      type: string
+      enum: [list, tree]
+      description:
+        This parameter defines how to represent the list of departments.
+        The default value is ‘list’, which returns a flat list of departments.
+        If this is set to 'tree’, departments are represented in a tree-like
+        structure where they may include sub-departments as `children`.
+  responses:
+    200:
+      body:
+        application/json:
+          type: Harvest.Department[]
+          examples:
+            render_as_list: !include ../examples/v1/departments/departments_as_list.json
+            render_as_tree: !include ../examples/v1/departments/departments_as_tree.json
+/{department_id}:
+  get:
+    description: Retrieve a department by its `id`.
+    queryParameters:
+      id:
+        type: number
+        description: The ID of the department to receive.
+      render_as:
+        type: string
+        enum: [list, tree]
+        description:
+          This parameter defines how to represent the list of departments.
+          The default value is ‘list’, which returns a flat list of departments.
+          If this is set to 'tree’, departments are represented in a tree-like
+          structure where they may include sub-departments as `children`.
+    responses:
+      200:
+        body:
+          application/json: Harvest.Department
+post:
+  description:
+    Create a new department.
+    _The tiered department feature is available only for customers with Standard or Premium
+    Greenhouse Recruiting. Use of this field will return an error for Basic Greenhouse
+    Recruiting customers._
+  is: [auditable]
+  body:
+    application/json: Harvest.PostDepartment
+  responses:
+    200:
+      body:
+        application/json: Harvest.Department

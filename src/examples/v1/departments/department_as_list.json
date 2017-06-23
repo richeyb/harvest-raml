@@ -1,0 +1,6 @@
+{
+    "id": 1,
+    "name": "Technology",
+    "parent_id": 5,
+    "child_ids": [11, 12]
+}

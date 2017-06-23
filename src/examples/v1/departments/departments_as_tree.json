@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Technology",
+    "children": [
+      {
+        "id": 11,
+        "name": "Design",
+        "children": []
+      },
+      {
+        "id": 12,
+        "name": "Engineering",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Administration",
+    "children": []
+  }
+]
