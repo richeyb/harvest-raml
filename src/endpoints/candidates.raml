@@ -1,0 +1,134 @@
+get:
+  is: [auditable, pageable, createdFilterable, updatedFilterable, jobFilterable]
+  description: List all of an organization's candidates.
+  responses:
+    200:
+      body:
+        application/json:
+          type: Candidate[]
+          example: !include ../examples/v1/candidates.json
+post:
+  is: [auditable]
+  description: Create a new candidate.
+  body:
+    application/json:
+      type: PostCandidate
+/{candidate_id}:
+  get:
+    description: Retrieve a candidate by its `id`.
+    is: [candidateIdable]
+    responses:
+      200:
+        body:
+          application/json:
+            type: Candidate
+  delete:
+    is: [auditable, candidateIdable]
+    description: Deletes a candidate by its `id`.
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+            properties:
+              message: string
+  patch:
+    is: [auditable, candidateIdable]
+    description: Update or `patch` a single candidate by its `id`.
+    body:
+      application/json:
+        type: PatchCandidate
+    responses:
+      200:
+        body:
+          application/json:
+            type: Candidate
+  /activity_feed:
+    get:
+      description: Retrieve a candidate's activity feed.
+      responses:
+        200:
+          body:
+            application/json:
+              type: ActivityFeed
+              example: !include ../examples/v1/activity_feed.json
+    /notes:
+        post:
+          description: Create a candidate note.
+          is: [auditable]
+          body:
+            application/json:
+              type: Harvest.PostActivityFeedNote
+          responses:
+            200:
+              body:
+                application/json:
+                  type: Harvest.ActivityFeedNote
+  /applications:
+    post:
+      description:
+        Create a new application for this candidate or prospect. If a prospect, this will add a new candidate application
+        to the given job on their profile, this will not convert their existing prospect application into a candidate
+        application.
+      is: [auditable]
+      body:
+        application/json:
+          type: Harvest.PostCandidateApplication
+      responses:
+        200:
+          body:
+            application/json:
+              type: Application
+  /attachments:
+    post:
+      description:
+        Post an attachment to a candidate’s profile by the candidate `id`.
+      is: [auditable]
+      body:
+        application/json:
+          type: Harvest.Attachment
+      responses:
+        200:
+          body:
+            application/json:
+              type: Harvest.Attachment
+  /anonymize:
+    put:
+      description: Anonymize the data associated with a candidate.
+      is: [auditable]
+      queryParameters:
+        fields:
+          type: string
+          required: true
+          description:
+            The set of field names that should be anonymized on the candidate from the following
+            list [full_name, current_company, current_title, tags, phone_numbers, emails,
+            social_media_links, websites, addresses, location, custom_candidate_fields, source,
+            recruiter, coordinator, attachments, application_questions, referral_questions, notes,
+            rejection_notes, email_addresses, activity_items, innotes, inmails, rejection_reason,
+            scorecards_and_interviews, offers, credited_to, headline, all_offer_versions, and
+            follow_up_reminders].
+      responses:
+        200:
+          body:
+            application/json:
+              type: Candidate
+/merge:
+  put:
+    is: [auditable]
+    description: Merge two candidates into one.
+    body:
+      application/json:
+        type: object
+        properties:
+          primary_candidate_id:
+            type: number
+            required: true
+            description:
+              The id of the first candidate that will be merged. This candidate will also be the result
+              of the merge.
+          duplicate_candidate_id:
+            type: number
+            required: true
+            description:
+              The id of the second candidate that will be merged. __This candidate will cease to exist after the merge is complete.__

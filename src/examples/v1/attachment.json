@@ -1,0 +1,6 @@
+{
+  "filename": "resume.pdf",
+  "url": "https://prod-heroku.s3.amazonaws.com/...",
+  "type": "resume",
+  "content_type": "application/pdf"
+}

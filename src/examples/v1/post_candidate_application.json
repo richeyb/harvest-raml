@@ -1,0 +1,15 @@
+{
+  "job_id": 266926,
+  "source_id": 7,
+  "initial_stage_id": 2708728,
+  "referrer": {
+    "type": "id",
+    "value": 770
+  },
+  "attachments": [{
+    "filename": "resume.pdf",
+    "type": "resume",
+    "content": "MGQwMzFkODIyN2VhZmE2MWRjMzc1YTZjMmUwNjdlMjQ6...",
+    "content_type": "application/pdf"
+  }]
+}

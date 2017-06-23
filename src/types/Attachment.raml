@@ -1,0 +1,60 @@
+#%RAML 1.0 DataType
+---
+displayName: Attachment
+type: object
+description: A user-supplied attachment.
+properties:
+  filename:
+    type: string
+    description: Name of the file
+    required: true
+  type:
+    type: string
+    enum: [resume, cover_letter, admin_only]
+    required: true
+  content:
+    type: string
+    description: Base64 encoded content of the attachment (if you are providing content, you do not need to provide url)
+    required: false
+  url:
+    type: string
+    description: Url of the attachment (if you are providing the url, you do not need to provide the content)
+    required: false
+  content_type:
+    type: string
+    description:
+      The content-type of the document you are sending. When using a URL, this generally isn’t needed, as the responding
+      server will deliver a content type. This should be included for encoded content. * - content_type is not required
+      for purposes of backward compatibility. It is strongly recommended that you always include content type for document uploads.
+    required: false
+    enum:
+      [
+        application/atom+xml,
+        application/javascript,
+        application/json,
+        application/msgpack,
+        application/pdf,
+        application/rss+xml,
+        application/vnd.ms-excel,
+        application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+        application/vnd.openxmlformats-officedocument.wordprocessingml.document,
+        application/xml,
+        application/x-www-form-urlencoded,
+        application/x-yaml,
+        application/zip,
+        multipart/form-data,
+        image/bmp,
+        image/gif,
+        image/jpeg,
+        image/png,
+        image/tiff,
+        text/calendar,
+        text/css,
+        text/csv,
+        text/html,
+        text/javascript,
+        text/plain,
+        text/vcard,
+        video/mpeg
+      ]
+example: !include ../examples/v1/attachment.json

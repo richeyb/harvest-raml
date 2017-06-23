@@ -1,0 +1,12 @@
+/tracking_links:
+  /{job_id}:
+    /tracking_link:
+      /{tracking_link_id}:
+        get:
+          description: Returns a specific tracking link for a job with `job_id = {job_id}` and `tracking_link_id = {tracking_link_id}`
+          responses:
+            200:
+              body:
+                application/json:
+                  type: TrackingLink
+                  example: !include ../examples/v1/tracking_link.json

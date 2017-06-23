@@ -1,0 +1,11 @@
+post:
+  is: [auditable]
+  description: Create a new prospect.
+  body:
+    application/json:
+      type: PostCandidate
+  responses:
+    200:
+      body:
+        application/json:
+          type: Candidate

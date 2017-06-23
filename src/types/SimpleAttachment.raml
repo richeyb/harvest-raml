@@ -1,0 +1,10 @@
+#%RAML 1.0 DataType
+displayName: SimpleAttachment
+type: object
+description: A JSON representation of a simple Greenhouse Attachment
+properties:
+  type:
+    description: The type of attachment
+    type: string
+    enum: [admin_only, public, cover_letter, offer_packet, resume, take_home_test]
+  url: string

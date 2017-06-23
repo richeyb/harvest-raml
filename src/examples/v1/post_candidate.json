@@ -1,0 +1,52 @@
+{
+  "first_name": "John",
+  "last_name": "Locke",
+  "company": "The Tustin Box Company",
+  "title": "Man of Mystery",
+  "is_private": false,
+  "phone_numbers": [
+    {
+      "value": "555-1212",
+      "type": "mobile"
+    }
+  ],
+  "addresses": [
+    {
+      "value": "123 Fake St.",
+      "type": "home"
+    }
+  ],
+  "email_addresses": [
+    {
+      "value": "john.locke+work@example.com",
+      "type": "work"
+    },
+    {
+      "value": "john.locke@example.com",
+      "type": "personal"
+    }
+  ],
+  "website_addresses": [
+    {
+      "value": "johnlocke.example.com",
+      "type": "personal"
+    }
+  ],
+  "social_media_addresses": [
+    {
+      "value": "linkedin.example.com/john.locke"
+    },
+    {
+      "value": "@johnlocke"
+    }
+  ],
+  "tags": [
+    "Walkabout",
+    "Orientation"
+  ],
+  "applications": [
+    {
+      "job_id": 4614
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+#%RAML 1.0 DataType
+displayName: PatchCandidate
+type: object
+description: A Candidate is a person who is either a prospect for a job or has an application for a job.
+uses:
+  Harvest: types.raml
+properties:
+  first_name?: string
+  last_name?: string
+  company?: string
+  title?: string
+  is_private?: boolean
+  phone_numbers?: Harvest.PhoneNumber[]
+  addresses?: Harvest.Address[]
+  email_addresses?: Harvest.EmailAddress[]
+  website_addresses?: Harvest.WebsiteAddress[]
+  social_media_addresses?: Harvest.SocialMediaAddress[]
+  tags?: Harvest.Tag[]
+  custom_fields?: Harvest.CustomField
+example: !include ../examples/v1/patch_candidate.json
